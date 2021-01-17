@@ -110,7 +110,7 @@ app.get('/:id', (req, res) => {
 
 
 //Init Page
-app.get('/', (req, res) => {
+app.get('/', redirectHome, (req, res) => {
     const { userId } = req.session
     res.render('welcome', {
         userId
