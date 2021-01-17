@@ -1,0 +1,65 @@
+
+.mrowall {
+    /*border: 2px solid red;*/
+    background-color:  #ededed;
+}
+
+.card_post, .mnav, .usercard{
+    background-color: white;
+}
+body {
+    background-color: #ededed;
+}
+
+.addbtn, .uservisit{
+    cursor: pointer;
+    transition: transform 100ms ease-in-out;
+}
+
+.addbtn:hover {
+    transform: scale(1.1);
+}
+
+.card_user_bt:hover {
+    background-color: #424242;
+}
+
+.read_bt:hover {
+    background-color: #b87e2c;
+}
+
+.uservisit:hover {
+    color: black;
+    transform: scale(1.1);
+}
+
+
+/*
+.usercard {
+    background-color: #ededed;
+    border-color: #F0AD4E;
+    /*border: 2px solid #1A1A1A;
+}
+*/
+
+/*
+.mcolall, .mclogo, .mclogout {
+    border: 2px solid blue;
+}
+
+#btn_logout {
+    border: 2px solid orange;
+}
+
+.mcard, .mcname{
+    border: 2px solid yellow;
+}
+
+.allcards {
+    border: 2px solid black;
+}
+
+.test {
+    border: 2px solid red;
+}*/
+

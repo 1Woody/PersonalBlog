@@ -1,0 +1,94 @@
+<script>
+    email = `<%= email %>`
+</script>
+
+<div class="mnav row mt-5 no-gutters">
+    <div class="mclogo col-sm col-md-1">
+        <h1 class="text-center mb-3">
+            <i class="fab fa-bootstrap fa-2x"></i>
+            </h1>
+    </div>
+    <div class="mcname col-sm col-md-9 m-auto">
+        <h1 id="name_user" class="title text-center">Loading User</h1>
+        <h5 id="email_user" class="title text-center mb-3"><%= email %></h5>
+    </div>
+    <div class="mclogout col-sm col-md-2 m-auto">
+        <h1 class="text-center">
+            <a href="/api/user/logout" id ="btn_logout" class="btn btn-sm btn-secondary">Logout</a>
+        </h1>
+    </div>
+</div>
+<!-- ROW STORIES & FRIENDS-->
+<div class=" mrbody row mb-3">
+</div>
+<!-- CARDS STORIES & FRIEND LIST-->
+<div class="mrowall row mb-5">
+    <div class="col-xs col-md-8">
+        <h2 class="text-start mt-3">Stories
+           <i class="addbtn fas fa-plus-circle" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+        </h2>
+        <!-- ADD MODAL -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="staticBackdropLabel">Title here</h4>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="title_id" class="form-label">Post Title</label>
+                            <input id="new_post_title" type="text" class="form-control"  placeholder="Add your title here...">
+                          </div>
+                          <div class="mb-3">
+                            <label for="content_id" class="form-label">Content</label>
+                            <textarea id="new_post_content" class="form-control" rows="8" aria-required="true"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btn_post" type="button" class="btn btn-warning" onclick="addPost()" data-bs-dismiss="modal">Add Post</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="cardlist"></div>
+    </div>
+    <div class=" col-xs col-md-4 ">
+        <h2 class="text-start mt-3">Friends</h2>
+        <form class="form-inline my-2 my-lg-0">
+            <input id="search_input" class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-warning my-2 my-sm-0" type="button">Search</button>
+        </form>
+        <div id="userfull_list">
+            <ul class="nav nav-tabs mt-3 " id="myTab" role="tablist">
+                <li id= "myTaball" class="nav-item m-auto" role="presentation">
+                <a class="nav-link active" id="allusers-tab" data-bs-toggle="tab" href="#allusers" role="tab" aria-controls="allusers" aria-selected="true">All</a>
+                </li>
+                <li id="myTabfollowers" class="nav-item m-auto" role="presentation">
+                <a class="nav-link" id="followers-tab" data-bs-toggle="tab" href="#followers" role="tab" aria-controls="followers" aria-selected="false">Followers</a>
+                </li>
+                <li id="myTabfollowing" class="nav-item m-auto" role="presentation">
+                <a class="nav-link" id="following-tab" data-bs-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">Following</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="allusers" role="tabpanel" aria-labelledby="allusers-tab">
+                    <div id="allusers_id"></div>
+                </div>
+                <div class="tab-pane fade" id="followers" role="tabpanel" aria-labelledby="followers-tab">
+                    <div id="followers_id"></div>
+                </div>
+                <div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
+                    <div id="following_id"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<script src="/js/ViewController.js"></script>
+
+
