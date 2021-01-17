@@ -1,5 +1,5 @@
 
-var pre_url = window.location.href.split('/visitblog/')[0]
+var pre_url = window.location.href.split('/visit/')[0]
 var url = pre_url + "/api"
 console.log(url)
 
@@ -36,7 +36,9 @@ function getHash(key, hash) {
 function formatpage(){
     //Coloca el nom de l'usuari a la capçalera
     $('#name_user').text(user_name)
-    document.getElementById('btn_logout').addEventListener("click", logout);
+    $('#btn_leave').on("click", function(){
+        window.close()
+    });
 }
 
 function logout(){
@@ -319,7 +321,7 @@ function SearchUsers() {
 
 function visitUsers(){
     $(".uservisit").on("click", function(){
-        let url_new = pre_url + "/visitblog/" + $(this).parent().attr('id').split('_')[1]
+        let url_new = pre_url + "/visit/" + $(this).parent().attr('id').split('_')[1]
         console.log(url_new)
         window.location.href = url_new
     })

@@ -38,7 +38,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-const TIME = 1000 * 60 * 60 * 2
+const TIME = 1000 * 60 * 60 * 3
 //const PORT = process.env.PORT || 3000
 const {
     PORT = 3000,
@@ -101,11 +101,12 @@ const redirectHome = (req, res, next) => {
 
 //Share Page
 
-app.get('/visit/:email', (req, res) => {
-    let email = req.params.email
+/*
+app.get('/:id', (req, res) => {
+    let email = req.params.id
     let user_url = '/visitblog/' + email
     res.redirect(user_url)
-})
+}) */
 
 
 //Init Page
@@ -225,6 +226,7 @@ app.post('/register', redirectHome, (req, res) => {
                 console.log(newUser)
                 newUser.save()
                 .then( () => { 
+                    req.session.userId = email
                     res.redirect('/home')
                 })
                 .catch(error => {
@@ -238,7 +240,8 @@ app.post('/register', redirectHome, (req, res) => {
 })
 
 
-app.post('/logout', redirectLogin, (req, res) => {
+//Should be a post (used get to access from a link)
+app.get('/logout', redirectLogin, (req, res) => {
     req.session.destroy(err => {
         if(err) {
             res.redirect('/home')
@@ -250,9 +253,10 @@ app.post('/logout', redirectLogin, (req, res) => {
 })
 
 
-app.get('/visitblog/:id', (req, res) => {
-    let email = req.session.userId
+app.get('/visit/:id', (req, res) => {
+    let email = req.params.id
     res.render('visitblog', {
-        email : email
+        email : email,
+        session_email : req.session.userId
     })
 })

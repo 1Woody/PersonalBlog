@@ -16,6 +16,7 @@ var followers = {}
 
 
 // --------------- HASH CLASS --------------
+
 function addHash(json, hash){
     let email = json.email
     hash[email] = json
@@ -50,7 +51,6 @@ function logout(){
 }
 
 // --------------- GET DATA --------------
-
 
 function getPost(){
     $.ajax({
@@ -197,7 +197,7 @@ function createListFollowing(){
     })
 }
 
-//---------- BUTTONS POST ------------
+//---------- BUTTONS USER CARD POST ------------
 
 function deletePost(id){
     let post_id = id.split('_')[1]
@@ -280,6 +280,7 @@ function addClickActionTab(){
 }
 
 // ------- BUTTON FROM TABS -----------
+
 function all_button(id){
     let user_dest = id.split('_')[1]
     let user_state = document.getElementById(id).textContent
@@ -367,10 +368,10 @@ function SearchUsers() {
 
 function visitUsers(){
     $(".uservisit").on("click", function(){
-        let url_new = pre_url + "/visitblog/" + $(this).parent().attr('id').split('_')[1]
+        let url_new = pre_url + "/visit/" + $(this).parent().attr('id').split('_')[1]
         console.log(url_new)
         window.open(
-            url_new, 
+            url_new,
             '_blank'
           );
         //window.location.href = url_new
