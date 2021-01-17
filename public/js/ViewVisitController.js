@@ -42,11 +42,10 @@ function formatpage(){
 }
 
 function logout(){
-    //reset values
+    //proyecto de futuro
     user_name = undefined
     user_email = undefined
     user_id = undefined
-    // faltan añadir variables
 }
 
 // --------------- GET DATA --------------
