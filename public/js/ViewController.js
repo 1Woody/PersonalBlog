@@ -1,9 +1,11 @@
 
-var pre_url = window.location.href.split('/blog/')[0] 
+var pre_url = window.location.href.split('/home')[0] 
+
 var url = pre_url + "/api"
 console.log(pre_url)
 
-var user_email = email//window.location.href.split('/blog/')[1]
+//Getting the email from the res.send from the sender
+var user_email = email
 var user_name = undefined
 var user_id = undefined
 

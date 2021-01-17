@@ -3,6 +3,7 @@ const { findById }    = require('../models/followers')
 const Follower        = require('../models/followers')
 const User            = require('../models/user')
 
+
 // Show the list of Followers
 const index = (req, res, next) => {
     Follower.find()
@@ -18,6 +19,7 @@ const index = (req, res, next) => {
     })
 }
 
+
 // Show Following user's list
 const following = (req, res, next) => {
     let user_email = req.params.id;
@@ -29,7 +31,6 @@ const following = (req, res, next) => {
         jsonData.forEach(res => {
             id_followers.push(res.user_email_dest)
         })
-        console.log(id_followers)
         res.json({
             id_followers
         })
@@ -40,53 +41,6 @@ const following = (req, res, next) => {
         })
     })
 }
-
-/*
-// Show Following user's list
-const following = (req, res, next) => {
-    //let userID = req.body.userID
-    let userID = req.params.id;
-    Follower.find({ user_email_origin: userID })
-    .then(response => {
-        //console.log(response)
-        let jsonData = JSON.stringify(response)
-        let id_followers = []
-        let json_users = []
-        jsonData = JSON.parse(jsonData)
-        jsonData.forEach(res => {
-            id_followers.push(res.user_email_dest)
-        })
-        console.log(id_followers)
-        for (let i=0; i< id_followers.length; i++){
-            User.findById(id_followers[i])
-            .then(user => {
-                //console.log(user)
-                json_users.push(user)
-                if(i+1 == id_followers.length){ 
-                    console.log(json_users)
-                    res.json({
-                        json_users
-                    })
-                }
-            })
-            .catch(err => {console.log(err)})
-        }
-        id_followers.forEach(val => {
-            User.findById(val)
-            .then(user => {
-                //console.log(user)
-                json_users.push(user)
-                //console.log(json_users)
-            })
-            .catch(err => {console.log(err)})
-        })
-    })
-    .catch(error => {
-        res.json({
-            message: 'An error Ocurred!'
-        })
-    })
-}*/
 
 
 // Show the followers of the user
@@ -100,7 +54,6 @@ const followers = (req, res, next) => {
         jsonData.forEach(res => {
             id_followers.push(res.user_email_origin)
         })
-        console.log(id_followers)
         res.json({
             id_followers
         })
@@ -111,22 +64,6 @@ const followers = (req, res, next) => {
         })
     })
 }
-/*
-const followers = (req, res, next) => {
-    //let userID = req.body.userID
-    let userID = req.params.id;
-    Follower.find({ user_email_dest: userID })
-    .then(response => {
-        res.json({
-            response
-        })
-    })
-    .catch(error => {
-        res.json({
-            message: 'An error Ocurred!'
-        })
-    })
-}*/
 
 
 // Add a new User 
@@ -151,7 +88,6 @@ const store = (req, res, next) => {
 
 
 // Stop following a user 
-
 const unfollow = (req, res, next) => {
     let user_email = req.params.id;
     Follower.find(
@@ -185,3 +121,4 @@ const unfollow = (req, res, next) => {
 module.exports = {
     index, following, followers, store, unfollow
 }
+

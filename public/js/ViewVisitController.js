@@ -367,7 +367,6 @@ function addCardUser(name, email, btn_text, tab_id, action, id){
         <h5 class="usercard_header card-title"> <i class="fas fa-user"></i>${name}</h5>
         </div>
         <p class="card-text">${email}</p>
-        <button id="btn${fullid}" href="#" class="card_user_bt btn btn-primary" onclick="${action}">${btn_text}</button>
     </div>
     `
     $("#" + tab_id).append(html_card)

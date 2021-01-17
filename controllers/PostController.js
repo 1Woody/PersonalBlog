@@ -77,7 +77,6 @@ const store = (req, res, next) => {
 
 //Update a Post 
 const update = (req, res, next) => {
-    //let postID = req.body.postID
     let postID = req.params.id;
     let updatedData = {
         title: req.body.title,
@@ -101,7 +100,6 @@ const update = (req, res, next) => {
 
 //delete a Post 
 const destroy = (req, res, next) => {
-    //let postID = req.body.postID
     let postID = req.params.id;
     Post.findByIdAndRemove(postID)
     .then(() => {
