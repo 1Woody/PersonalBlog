@@ -299,15 +299,6 @@ function following_button(id){
 
 
 //----------- SEARCH FILTER ---------------
-function searchFilter(){
-    $('#filtreFilms').on("keyup", function(){
-        var value = $(this).val().toLowerCase();
-        $(".cardHeader").filter(function(){
-            if ($(this).text().toLowerCase().indexOf(value)>-1) $(this).parent().parent().parent().parent().show()
-            else $(this).parent().parent().parent().parent().hide()
-        });
-    });
-}
 
 function SearchUsers() {
     $('#search_input').on("keyup", function(){
