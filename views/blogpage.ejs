@@ -5,8 +5,8 @@
 <div class="mnav row mt-5 no-gutters">
     <div class="mclogo col-sm col-md-1">
         <h1 class="text-center mb-3">
-            <i class="fab fa-bootstrap fa-2x"></i>
-            </h1>
+            <i id="blog_logo" class="fab fa-bootstrap fa-2x"></i>
+        </h1>
     </div>
     <div class="mcname col-sm col-md-9 m-auto">
         <h1 id="name_user" class="title text-center">Loading User</h1>
@@ -40,11 +40,11 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="title_id" class="form-label">Post Title</label>
-                            <input id="new_post_title" type="text" class="form-control"  placeholder="Add your title here...">
+                            <input id="new_post_title" type="text" class="form-control" maxlength="100" placeholder="Add your title here...">
                           </div>
                           <div class="mb-3">
                             <label for="content_id" class="form-label">Content</label>
-                            <textarea id="new_post_content" class="form-control" rows="8" aria-required="true"></textarea>
+                            <textarea id="new_post_content" class="form-control" rows="8" maxlength="7000" aria-required="true"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">

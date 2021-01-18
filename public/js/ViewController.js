@@ -39,8 +39,12 @@ function getHash(key, hash) {
 function formatpage(){
     //Coloca el nom de l'usuari a la capçalera
     $('#name_user').text(user_name)
-    document.getElementById('btn_logout').addEventListener("click", logout);
+    $('#btn_logout').on("click", logout)
+    $('#blog_logo').on("click", function(){
+        window.location.href ="/home"
+    })
 }
+
 
 function logout(){
     //proyecto de futuro
@@ -235,6 +239,8 @@ function addPost(){
         let resume = "Oh! it's empty"
         if(content.length > 170) resume = content.substring(0,170) + "..."
         else resume = content
+        $("#new_post_title").val("")
+        $("#new_post_content").val("")
         addCardPost (post_id, title, resume, content, "cardlist", post.length+1)
         
     })
@@ -443,7 +449,9 @@ function addCardPost (post_id, title, resume, content, tab_id, num){
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">${content}</div>
+                <div class="modal-body">
+                    <p>${content}</p>
+                </div>
                 <div class="modal-footer">
                     <button id="btn_${post_id}" type="button" class="btn btn-danger" onclick="deletePost(id)" data-bs-dismiss="modal">Delete Post</button>
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>

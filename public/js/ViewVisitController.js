@@ -39,6 +39,9 @@ function formatpage(){
     $('#btn_leave').on("click", function(){
         window.close()
     });
+    $('#blog_logo').on("click", function(){
+        window.location.href ="/home"
+    })
 }
 
 function logout(){
