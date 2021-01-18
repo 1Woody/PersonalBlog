@@ -3,9 +3,10 @@ var pre_url = window.location.href.split('/home')[0]
 
 var url = pre_url + "/api"
 console.log(pre_url)
+console.log($("#test\\;dani").attr('id').split(';')[1])
 
 //Getting the email from the res.send from the sender
-var user_email = email
+//const user_email = email
 var user_name = undefined
 var user_id = undefined
 
@@ -127,7 +128,7 @@ function getFollowers() {
 
 function getUserData(){
 // funció principal amb la que agafarem les dades rellevants de l'usuari
-    user_email = $('#email_user').text()
+    //user_email = $('#email_user').text()
     $.ajax({
         dataType: "json",
         url: url + '/user/' + user_email
@@ -136,7 +137,7 @@ function getUserData(){
         let jsonData = JSON.stringify(user.response);
         jsonData = JSON.parse(jsonData)
         user_name = jsonData.name
-        user_email = jsonData.email
+        //user_email = jsonData.email
         user_id = jsonData._id
         DataController()
     })
@@ -287,7 +288,7 @@ function addClickActionTab(){
 // ------- BUTTON FROM TABS -----------
 
 function all_button(id){
-    let user_dest = id.split('_')[1]
+    let user_dest = id.split(';')[1]
     let user_state = document.getElementById(id).textContent
     if(user_state == "Follow"){
         $.ajax({
@@ -328,7 +329,7 @@ function all_button(id){
 
 
 function following_button(id){
-    let user_dest = id.split('_')[1]
+    let user_dest = id.split(';')[1]
     $.ajax({
         dataType: "json",
         type: "DELETE",
@@ -364,7 +365,7 @@ function SearchUsers() {
 
 function visitUsers(){
     $(".uservisit").on("click", function(){
-        let url_new = pre_url + "/visit/" + $(this).parent().attr('id').split('_')[1]
+        let url_new = pre_url + "/visit/" + $(this).parent().attr('id').split(';')[1]
         console.log(url_new)
         window.open(
             url_new,
@@ -413,7 +414,7 @@ function PostViewController(post_size){
 //---------- TEMPLATES FOR CREATE ----------------------
 
 function addCardUser(name, email, btn_text, tab_id, action, id){
-    let fullid = id + "_" + email
+    let fullid = id + ";" + email
     let html_card = 
     `
     <div id="card${fullid}" class="usercard card text-center card-body border-0 mt-2">
