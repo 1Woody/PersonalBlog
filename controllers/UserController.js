@@ -40,7 +40,8 @@ const show = (req, res, next) => {
     })
 }
 
-// Show single User
+// Show only important info from a single user 
+// Return { name, email }
 const showinfo = (req, res, next) => {
     let email = req.params.id;
     User.findOne({email : email})
@@ -83,7 +84,7 @@ const update = (req, res, next) => {
     })
 }
 
-//delete a User
+//Delete a User
 const destroy = (req, res, next) => {
     let userID = req.params.id;
     User.findByIdAndRemove(userID)

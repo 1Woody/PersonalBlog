@@ -12,7 +12,6 @@ const FollowerSchema    = new Schema({
     }
 }, {timestamps: true})
 
-//FollowerSchema.index({ user_email_origin: 1, user_email_dest: 1 }, { unique: true });
 const Follower      = mongoose.model('Follower', FollowerSchema)
 module.exports  = Follower
 

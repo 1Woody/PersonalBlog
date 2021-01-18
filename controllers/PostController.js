@@ -35,7 +35,6 @@ const userPostlist = (req, res, next) => {
 
 // Show single Post
 const show = (req, res, next) => {
-    //let postID = req.body.postID
     let postID = req.params.id;
     Post.findById(postID)
     .then(response => {
@@ -98,7 +97,7 @@ const update = (req, res, next) => {
     })
 }
 
-//delete a Post 
+//Delete a Post 
 const destroy = (req, res, next) => {
     let postID = req.params.id;
     Post.findByIdAndRemove(postID)

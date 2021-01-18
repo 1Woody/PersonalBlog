@@ -38,13 +38,13 @@ app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-const TIME = 1000 * 60 * 60 * 3
-//const PORT = process.env.PORT || 3000
+// Time duration of the session
+const TIME = 1000 * 3600 * 3
 const {
     PORT = 3000,
     NODE_ENV = 'dev',
     SESS_NAME = 'sid',
-    SESS_SECRET = 'session_secret', //importante para prod
+    SESS_SECRET = 'session_secret',
     SESS_LIFE = TIME
 } = process.env
 
@@ -62,6 +62,10 @@ app.use(bodyParser.urlencoded({
 //static files
 app.use(express.static(__dirname + '/public'))
 
+
+
+//-------------------- POST & USER & FOLLOWER ----------------------
+
 app.use('/api/post', PostRoute)
 app.use('/api/user', UserRoute)
 app.use('/api/follower', FollowerRoute)
@@ -69,6 +73,7 @@ app.use('/api/follower', FollowerRoute)
 
 //-------------------- INDEX & LOGIN & REGISTER --------------------
 
+// Cookie to keep session of the user
 app.use( session({
     name : SESS_NAME,
     resave : false,
@@ -83,6 +88,7 @@ app.use( session({
 
 
 //MIDDLEWARE FUNCTIONS
+//redirect login if there is no session
 const redirectLogin = (req, res, next) => {
     if(!req.session.userId) {
         res.redirect('/login')
@@ -91,6 +97,8 @@ const redirectLogin = (req, res, next) => {
     }
 }
 
+
+//redirect home if session already exists
 const redirectHome = (req, res, next) => {
     if(req.session.userId) {
         res.redirect('/home')
@@ -99,17 +107,8 @@ const redirectHome = (req, res, next) => {
     }
 }
 
-//Share Page
 
-/*
-app.get('/:id', (req, res) => {
-    let email = req.params.id
-    let user_url = '/visitblog/' + email
-    res.redirect(user_url)
-}) */
-
-
-//Init Page
+//Init Page (welcome)
 app.get('/', redirectHome, (req, res) => {
     const { userId } = req.session
     res.render('welcome', {
@@ -148,7 +147,7 @@ app.get('/register', redirectHome, (req, res) => {
     res.render('register')
 })
 
-
+// POST login
 app.post('/login', redirectHome, (req, res) => {
     const { email, password } = req.body
     let errors = []
@@ -186,7 +185,7 @@ app.post('/login', redirectHome, (req, res) => {
 
 })
 
-
+//POST register
 app.post('/register', redirectHome, (req, res) => {
     const { name, email, password, password2 } = req.body
     let errors = []
@@ -240,7 +239,7 @@ app.post('/register', redirectHome, (req, res) => {
 })
 
 
-//Should be a post (used get to access from a link)
+//Should be a post (used GET to access from a link on the client)
 app.get('/logout', redirectLogin, (req, res) => {
     req.session.destroy(err => {
         if(err) {
@@ -252,7 +251,7 @@ app.get('/logout', redirectLogin, (req, res) => {
     })
 })
 
-
+//GET visit page of a user
 app.get('/visit/:id', (req, res) => {
     let email = req.params.id
     res.render('visitblog', {

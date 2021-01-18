@@ -8,8 +8,6 @@ router.get('/following/:id', FollowerController.following)
 router.get('/followers/:id', FollowerController.followers)
 router.post('/:id', FollowerController.store)
 router.delete('/unfollow/:id', FollowerController.unfollow)
-/*
-router.post('/update', UserController.update)
-*/
+
 module.exports = router
 

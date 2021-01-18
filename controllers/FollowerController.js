@@ -20,7 +20,7 @@ const index = (req, res, next) => {
 }
 
 
-// Show Following user's list
+// Show Following user list
 const following = (req, res, next) => {
     let user_email = req.params.id;
     Follower.find({ user_email_origin: user_email })
