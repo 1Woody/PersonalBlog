@@ -348,15 +348,6 @@ function following_button(id){
 
 
 //----------- SEARCH FILTER ---------------
-function searchFilter(){
-    $('#filtreFilms').on("keyup", function(){
-        var value = $(this).val().toLowerCase();
-        $(".cardHeader").filter(function(){
-            if ($(this).text().toLowerCase().indexOf(value)>-1) $(this).parent().parent().parent().parent().show()
-            else $(this).parent().parent().parent().parent().hide()
-        });
-    });
-}
 
 function SearchUsers() {
     $('#search_input').on("keyup", function(){
@@ -379,35 +370,42 @@ function visitUsers(){
             url_new,
             '_blank'
           );
-        //window.location.href = url_new
     })
 }
 
 
 //----------- MAIN CALL CONTROLLERS --------------
 
+//Informació prioritaria del usuari
+//Click events
 $(document).ready(function() {
     getUserData()
     addClickActionTab()
     SearchUsers()
 })
 
+//Recollecció de dades de totes les colleccions
 function DataController(){
     formatpage()
     getPost()
     getAllUsers()
 }
 
+//Recollecció de dades de la relació follow
 function FollowersController() {
     getFollowing()
     getFollowers()
 }
+
+//Implantació de dades al html
 function FollowersViewController() {
     createListFollowers()
     createListFollowing()
     createListAllUsers()
     visitUsers()
 }
+
+//Implantació de nou post
 function PostViewController(post_size){
     createListPost(post_size)
 }
