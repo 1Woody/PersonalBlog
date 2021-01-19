@@ -430,11 +430,13 @@ function addCardUser(name, email, btn_text, tab_id, action, id){
 
 
 function addCardPost (post_id, title, resume, content, tab_id, num){
-    let html_card = 
+    content = '<p>' + content.replace(/\n{2,}/g, '</p><p>').replace(/\n/g, '<br>') + '</p>'
+    //resume = '<p class="card-text content_post">' + resume.replace(/\n{2,}/g, '</p><p>').replace(/\n/g, '<br>') + '</p>'
+    let html_card =
     `
     <div id="card_${post_id}" class="card_post card border-0 card-body mb-3">
         <h5 class="card-title lead">${title}</h5>
-        <p class="card-text content_post">${resume}</p>
+        ${resume}
         <div class="row justify-content-center">
             <a href="" class="read_bt btn btn-warning btn-md" data-bs-toggle="modal" data-bs-target="#fullcontentModal${num}">Read More</a>
         </div>
@@ -449,7 +451,7 @@ function addCardPost (post_id, title, resume, content, tab_id, num){
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>${content}</p>
+                    ${content}
                 </div>
                 <div class="modal-footer">
                     <button id="btn_${post_id}" type="button" class="btn btn-danger" onclick="deletePost(id)" data-bs-dismiss="modal">Delete Post</button>
