@@ -41,7 +41,7 @@ app.use(bodyParser.json())
 // Time duration of the session
 const TIME = 1000 * 3600 * 3
 const {
-    PORT = 3000,
+    PORT = 80,
     NODE_ENV = 'dev',
     SESS_NAME = 'sid',
     SESS_SECRET = 'session_secret',
@@ -54,7 +54,7 @@ app.listen(PORT, ()=> {
     console.log(`Server running on port ${PORT}`)
 })
 
-// Bodyparser 
+// Bodyparser
 app.use(bodyParser.urlencoded({
     extended : true
 }))
