@@ -3,7 +3,6 @@ var pre_url = window.location.href.split('/home')[0]
 
 var url = pre_url + "/api"
 console.log(pre_url)
-console.log($("#test\\;dani").attr('id').split(';')[1])
 
 //Getting the email from the res.send from the sender
 //const user_email = email

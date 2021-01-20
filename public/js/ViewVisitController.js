@@ -363,6 +363,7 @@ function addCardUser(name, email, btn_text, tab_id, action, id){
 
 
 function addCardPost (post_id, title, resume, content, tab_id, num){
+    content = '<p>' + content.replace(/\n{2,}/g, '</p><p>').replace(/\n/g, '<br>') + '</p>'
     let html_card = 
     `
     <div id="card_${post_id}" class="card_post card border-0 card-body mb-3">
